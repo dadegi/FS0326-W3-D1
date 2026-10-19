@@ -166,3 +166,82 @@ console.log(restSum('La somma è', 2, 6, 4));
 console.log(restSum('La somma è', 9, 2));
 console.log(restSum('La somma è', 12));
 console.log(restSum('La somma è', 8, 2, 4, 3));
+
+const myList = document.querySelector('#myList');
+const userNames = ['Mario', 'Giovanna', 'Nicola', 'Elena'];
+userNames[userNames.findIndex((user) => user === 'Nicola')] = 'Antonio';
+console.log(userNames);
+
+userNames.forEach((userName) => {
+	myList.innerHTML += `<li>${userName}</li>`;
+}); // Equivale a for (let i = 0; i < userNames.length; i++ {myList.innerHTML += userNames[i]});
+
+const myNumbers = [3, 8, 23, 18, 45, 12];
+let myFind = myNumbers.find((num) => num > 20);
+console.log(myFind);
+
+console.log(myNumbers.some((num) => num > 20));
+console.log(myNumbers.every((num) => num > 20));
+
+const double = myNumbers.map((num) => num * 2);
+console.log(double);
+
+const greetingUsers = userNames.map((userName) => `Ciao ${userName}`);
+console.log(greetingUsers);
+
+const myGreetingList = document.querySelector('#myGreetingList');
+greetingUsers.forEach((greetingUser) => {
+	myGreetingList.innerHTML += `<li>${greetingUser}</li>`;
+});
+
+const otherUsers = [
+	{
+		nome: 'Mario',
+		eta: 30,
+	},
+	{
+		nome: 'Anna',
+		eta: 17,
+	},
+	{
+		nome: 'Antonio',
+		eta: 24,
+	},
+	{
+		nome: 'Elena',
+		eta: 16,
+	},
+	{
+		nome: 'Nicola',
+		eta: 35,
+	},
+];
+
+const otherNames = otherUsers.map(({ nome }) => nome);
+console.log(otherNames);
+
+const filtered = myNumbers.filter((num) => num < 20);
+console.log(filtered);
+
+const maggiorenni = otherUsers.filter(({ eta }) => eta >= 18);
+console.log(maggiorenni);
+
+const myTotal = myNumbers.reduce((acc, num) => acc + num, 0);
+console.log(myTotal);
+
+console.log(myNumbers.sort());
+console.log(myNumbers.sort((num1, num2) => num1 - num2));
+
+const majorList = document.querySelector('#majorList');
+const orderdList = otherUsers
+	.filter((user) => user.eta >= 18)
+	.map((user) => user.nome)
+	.sort()
+	.forEach((user) => {
+		majorList.innerHTML += `<li>${user}</li>`;
+	});
+
+// const orderdUsers = otherUsers.filter((user) => user.eta >= 18);
+// const orderList = orderUsers.map((user) => user.nome);
+// orderList.sort();
+// orderList..forEach((user) => {majorList.innerHTML += `<li>${user}</li>`;});
